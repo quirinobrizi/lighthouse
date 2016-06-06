@@ -1,0 +1,21 @@
+{
+  "authentication": {
+    "type": "basic",
+    "provider": {
+      "module": "../providers/authentication",
+      "function": "basic"
+    },
+    "whitelist": [{
+      "verb": "GET",
+      "path": "/stevedore/version"
+    }]
+  },
+  "server": {
+    "port": 3000,
+    "https": false,
+    "https_options": {}
+  },
+  "registry": {
+    "url": "http://localhost:5000/"
+  }
+}

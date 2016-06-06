@@ -20,5 +20,16 @@
   "bugs": {
     "url": "https://github.com/quirinobrizi/lighthouse/issues"
   },
-  "homepage": "https://github.com/quirinobrizi/lighthouse#readme"
+  "homepage": "https://github.com/quirinobrizi/lighthouse#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cluster": "^0.7.7",
+    "config": "^1.21.0",
+    "express": "^4.13.4",
+    "nodemon": "^1.9.2",
+    "passport": "^0.3.2",
+    "passport-client-cert": "^2.0.0",
+    "passport-http": "^0.3.0",
+    "underscore": "^1.8.3"
+  }
 }
