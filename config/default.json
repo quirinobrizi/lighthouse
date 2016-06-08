@@ -7,7 +7,7 @@
     },
     "whitelist": [{
       "verb": "GET",
-      "path": "/stevedore/version"
+      "path": "/lighthouse/index.html"
     }]
   },
   "server": {
@@ -16,6 +16,6 @@
     "https_options": {}
   },
   "registry": {
-    "url": "http://localhost:5000/"
+    "url": "http://172.24.0.4:5000/"
   }
 }

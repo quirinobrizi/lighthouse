@@ -19,7 +19,7 @@ var request = require('request'),
 
 module.exports = function(options) {
 
-  console.debug('create lighthouse proxy with options: [%j]', options);
+  console.log('create lighthouse proxy with options: [%j]', options);
   var _options = options;
 
   function prepareRequestOptions(req) {
@@ -40,7 +40,7 @@ module.exports = function(options) {
   }
 
   function buildUrl(req) {
-    return _options.get("registry.url") + req.path.substring(10);
+    return _options.get("registry.url") + '/v2/' + req.path.substring(16);
   }
 
   function setResponseHeaders(clientResponse, containerResponse) {
@@ -60,6 +60,10 @@ module.exports = function(options) {
         setResponseHeaders(resp, response);
         resp.status(response.statusCode).send(body).end();
       });
+    },
+
+    static: function(req, resp) {
+
     }
   }
 };

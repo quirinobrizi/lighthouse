@@ -38,6 +38,7 @@ function ServiceConfigurer(options) {
 
   this.configure = function() {
     this.configurePassport();
+    this.configureExpress();
     this.configureServer();
   };
 
@@ -64,12 +65,17 @@ function ServiceConfigurer(options) {
         .build(express);
     }
     new EndpointBuilder(express)
-      .withPath('/lighthouse/*')
+      .withPath('/lighthouse/api/*')
       .withVerb('all')
       .withRouter(lighthouse.docker)
       .withAuthenticator(passport.authenticate(this.options.get('authentication.type'), {
         session: false
       }))
+      .build(express);
+    new EndpointBuilder(express)
+      .withPath('/lighthouse/static/*')
+      .withVerb('all')
+      .withRouter(lighthouse.static)
       .build(express);
   };
 
