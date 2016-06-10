@@ -30,6 +30,7 @@
     "passport": "^0.3.2",
     "passport-client-cert": "^2.0.0",
     "passport-http": "^0.3.0",
+    "path": "^0.12.7",
     "underscore": "^1.8.3"
   }
 }

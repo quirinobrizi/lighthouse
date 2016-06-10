@@ -1,0 +1,14 @@
+<div class="container-fluid">
+	<div class="row">
+		<p>
+			Search:
+			<input ng-model="$ctrl.query">
+		</p>
+		
+		<ul class="repositories">
+			<li ng-repeat="repository in $ctrl.repositories | filter:$ctrl.query">
+				<span>{{repository}}</span>
+			</li>
+		</ul>
+	</div>
+</div>

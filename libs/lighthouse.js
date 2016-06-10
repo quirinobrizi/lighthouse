@@ -15,7 +15,8 @@
  */
 
 var request = require('request'),
-  _ = require('underscore');
+  _ = require('underscore'),
+  path = require('path');
 
 module.exports = function(options) {
 
@@ -60,10 +61,6 @@ module.exports = function(options) {
         setResponseHeaders(resp, response);
         resp.status(response.statusCode).send(body).end();
       });
-    },
-
-    static: function(req, resp) {
-
     }
   }
 };
