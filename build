@@ -1,0 +1,4 @@
+!#/bin/bash
+
+docker build -t quirinobrizi/lighthouse:$1 .
+docker push quirinobrizi/lighthouse:$1

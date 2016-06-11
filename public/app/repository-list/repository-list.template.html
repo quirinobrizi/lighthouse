@@ -1,14 +1,20 @@
 <div class="container-fluid">
 	<div class="row">
-		<p>
-			Search:
-			<input ng-model="$ctrl.query">
-		</p>
-		
-		<ul class="repositories">
-			<li ng-repeat="repository in $ctrl.repositories | filter:$ctrl.query">
-				<span>{{repository}}</span>
-			</li>
-		</ul>
+		<div class="col-md-2">
+			<p>
+				Search:
+				<input ng-model="$ctrl.query">
+			</p>
+		</div>
+		<div class="col-md-10">
+			<ul class="repositories">
+				<li ng-repeat="repository in $ctrl.repositories | filter:$ctrl.query" class="thumbnail">
+					<a href="#!/repositories/{{repository}}" class="thumb">
+						<img fallback-src="images/docker.png" ng-src="images/{{repository}}.png" alt="{{repository}}" />
+					</a>
+					<a href="#!/repositories/{{repository}}" class="repository-text">{{repository}}</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>

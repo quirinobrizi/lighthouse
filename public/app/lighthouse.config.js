@@ -13,15 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-angular
-  .module('repositoryList')
-  .component('repositoryList', {
-    templateUrl: 'app/repository-list/repository-list.template.html',
-    controller: [
-      'Repository',
-      function RepositoryListController(Repository) {
-        var self = this;
-        self.repositories = Repository.catalog();
-      }
-    ]
-  });
+angular.module('lighthouse')
+  .config(['$locationProvider', '$routeProvider',
+    function config($locationProvider, $routeProvider) {
+      $locationProvider.hashPrefix('!');
+
+      $routeProvider.
+      when('/repositories', {
+        template: '<repository-list></repository-list>'
+      }).
+      when('/repositories/:repositoryName*', {
+        template: '<repository-detail></repository-detail>'
+      }).
+      otherwise('/repositories');
+    }
+  ]);

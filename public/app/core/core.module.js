@@ -14,14 +14,4 @@
  * limitations under the License.
  */
 angular
-  .module('repositoryList')
-  .component('repositoryList', {
-    templateUrl: 'app/repository-list/repository-list.template.html',
-    controller: [
-      'Repository',
-      function RepositoryListController(Repository) {
-        var self = this;
-        self.repositories = Repository.catalog();
-      }
-    ]
-  });
+  .module('core', ['core.repository']);

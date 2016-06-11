@@ -1,3 +1,41 @@
-repositories{
+body {
+  padding-top: 100px;
+}
+
+h1 {
+  border-bottom: 1px solid gray;
+  margin-top: 0;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+ul {
 	list-style: none;
+}
+
+ul li{
+	clear: both;
+  height: 115px;
+}
+
+.thumb {
+	float: left;
+  height: 100px;
+  margin: 0 1em 1.5em 0;
+  padding-bottom: 1em;
+  width: 100px;
+}
+
+.repository-text {
+  font-weight: bolder;
+  text-decoration: none;
+  display: inline-block;
+  color: #337ab7;
+  margin-top: 3em;
+}
+
+.navbar-brand {float:none;}
+.navbar-brand img {
+	height: 40px;
+	width: auto;
 }

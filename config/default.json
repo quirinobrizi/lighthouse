@@ -13,6 +13,6 @@
     "https_options": {}
   },
   "registry": {
-    "url": "http://172.24.0.4:5000/"
+    "url": "http://localhost:5000"
   }
 }

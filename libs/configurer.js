@@ -51,7 +51,7 @@ function ServiceConfigurer(options) {
 
   this.configureExpress = function() {
 
-    server.use("/static", express.static(path.join(__dirname, '../public')));
+    server.use("/", express.static(path.join(__dirname, '../public')));
     server.use(bodyParser.json());
 
     var lighthouse = require('./lighthouse')(this.options),
@@ -59,10 +59,6 @@ function ServiceConfigurer(options) {
 
     for (var key in whitelist) {
       var endpoint = whitelist[key];
-      // path = /(\/lighthouse\/).*/ig.exec(endpoint.path);
-      // if (!path || '/lighthouse/' !== path[1]) {
-      //   throw new Error('whitelist path should be on the form /lighthouse/.*');
-      // }
       console.log('[service-configurer] whitelisting endpoint [%j]', endpoint);
       new EndpointBuilder()
         .withPath(endpoint.path)

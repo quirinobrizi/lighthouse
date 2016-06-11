@@ -6,9 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Lighthouse</title>
 		
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-		<style rel="stylesheet" href="css/style.css"></style>
+		<link rel="stylesheet" href="css/style.css"></link>
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -18,11 +20,29 @@
 	</head>
 	<body ng-app="lighthouse">
 		
-		<repository-list></repository-list>
-
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<img alt="Brand" src="images/lighthouse.png">
+					</a>
+				</div>
+			</div>
+		</nav>
+		<div ng-view></div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" ></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+		<script type="text/javascript" src="app/lighthouse.module.js"></script>
+		<script type="text/javascript" src="app/lighthouse.config.js"></script>
+		<script type="text/javascript" src="app/core/core.module.js"></script>
+		<script type="text/javascript" src="app/core/image-fallback/image-fallback.directive.js"></script>
+		<script type="text/javascript" src="app/core/repository/repository.module.js"></script>
+		<script type="text/javascript" src="app/core/repository/repository.service.js"></script>
+		<script type="text/javascript" src="app/repository-list/repository-list.module.js"></script>
+		<script type="text/javascript" src="app/repository-list/repository-list.component.js"></script>
+		<script type="text/javascript" src="app/repository-detail/repository-detail.module.js"></script>
+		<script type="text/javascript" src="app/repository-detail/repository-detail.component.js"></script>
 	</body>
-	<script type="text/javascript" src="app/lighthouse.js"></script>
-	<script type="text/javascript" src="app/repository-list/repository-list.component.js"></script>
 </html>

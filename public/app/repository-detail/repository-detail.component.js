@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 angular
-  .module('repositoryList')
-  .component('repositoryList', {
-    templateUrl: 'app/repository-list/repository-list.template.html',
-    controller: [
-      'Repository',
-      function RepositoryListController(Repository) {
+  .module('repositoryDetail')
+  .component('repositoryDetail', {
+    templateUrl: 'app/repository-detail/repository-detail.template.html',
+    controller: ['Repository', '$routeParams',
+      function RepositoryDetailController(Repository, $routeParams) {
         var self = this;
-        self.repositories = Repository.catalog();
+        self.repositoryName = $routeParams.repositoryName;
+        self.repository = Repository.tags({
+          repositoryName: self.repositoryName
+        });
       }
     ]
   });

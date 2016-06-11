@@ -1,0 +1,21 @@
+<div class="container-fluid">
+	<h1>{{$ctrl.repository.name}}</h1>
+	<div class="row">
+		<div class="col-md-2">
+			<p>
+				Search:
+				<input ng-model="$ctrl.query">
+			</p>
+		</div>
+		<div class="col-md-10">
+			<ul>
+				<li ng-repeat="tag in $ctrl.repository.tags | filter:$ctrl.query"  class="thumbnail">
+					<a href="#!/repositories/{{$ctrl.repositoryName}}" class="thumb">
+						<img fallback-src="images/docker.png" ng-src="images/{{$ctrl.repositoryName}}.png" alt="{{$ctrl.repositoryName}}:{{tag}}" />
+					</a>
+					<span class="repository-text">{{tag}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
