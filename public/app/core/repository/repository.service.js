@@ -20,27 +20,27 @@ angular
       return $resource('', {}, {
         catalog: {
           method: 'GET',
-          url: 'lighthouse/api/_catalog',
+          url: 'api/_catalog',
           transformResponse: function(data, headers) {
             return angular.fromJson(data).repositories;
           },
           isArray: true,
           headers: {
-            'Authentication': 'Basic bGlnaHRob3VzZTpsaWdodGhvdXNl'
+            'Authorization': 'Basic bGlnaHRob3VzZTpsaWdodGhvdXNl'
           }
         },
         tags: {
           method: 'GET',
-          url: 'lighthouse/api/:repositoryName/tags/list',
+          url: 'api/:repositoryName/tags/list',
           headers: {
-            'Authentication': 'Basic bGlnaHRob3VzZTpsaWdodGhvdXNl'
+            'Authorization': 'Basic bGlnaHRob3VzZTpsaWdodGhvdXNl'
           }
         },
         manifest: {
           method: 'GET',
-          url: 'lighthouse/api/:repositoryName/manifests/:tag',
+          url: 'api/:repositoryName/manifests/:tag',
           headers: {
-            'Authentication': 'Basic bGlnaHRob3VzZTpsaWdodGhvdXNl'
+            'Authorization': 'Basic bGlnaHRob3VzZTpsaWdodGhvdXNl'
           }
         }
       });

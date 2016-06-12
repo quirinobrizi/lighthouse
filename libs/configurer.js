@@ -51,7 +51,7 @@ function ServiceConfigurer(options) {
 
   this.configureExpress = function() {
 
-    server.use("/", express.static(path.join(__dirname, '../public')));
+    server.use("/lighthouse", express.static(path.join(__dirname, '../public')));
     server.use(bodyParser.json());
 
     var lighthouse = require('./lighthouse')(this.options),
