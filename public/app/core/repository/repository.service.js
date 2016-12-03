@@ -24,24 +24,15 @@ angular
           transformResponse: function(data, headers) {
             return angular.fromJson(data).repositories;
           },
-          isArray: true,
-          headers: {
-            'Authorization': 'Basic bGlnaHRob3VzZTpsaWdodGhvdXNl'
-          }
+          isArray: true
         },
         tags: {
           method: 'GET',
-          url: 'api/:repositoryName/tags/list',
-          headers: {
-            'Authorization': 'Basic bGlnaHRob3VzZTpsaWdodGhvdXNl'
-          }
+          url: 'api/:repositoryName/tags/list'
         },
         manifest: {
           method: 'GET',
-          url: 'api/:repositoryName/manifests/:tag',
-          headers: {
-            'Authorization': 'Basic bGlnaHRob3VzZTpsaWdodGhvdXNl'
-          }
+          url: 'api/:repositoryName/manifests/:tag'
         }
       });
     }

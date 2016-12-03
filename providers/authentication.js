@@ -7,5 +7,8 @@ module.exports = {
   clientCertificate: function(certificate, cb) {
     console.log("on authentication provider %j", certificate);
     cb(null, true);
+  },
+  noOp: function(cb) {
+    cb(null, true);
   }
 };

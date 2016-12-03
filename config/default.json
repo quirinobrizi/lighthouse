@@ -1,9 +1,9 @@
 {
   "authentication": {
-    "type": "basic",
+    "type": "noop",
     "provider": {
       "module": "../providers/authentication",
-      "function": "basic"
+      "function": "noOp"
     },
     "whitelist": []
   },

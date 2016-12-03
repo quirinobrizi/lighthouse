@@ -18,7 +18,8 @@
 
 var Credential = require('./models').Credential,
   BasicStrategy = require('passport-http').BasicStrategy,
-  ClientCertStrategy = require('passport-client-cert').Strategy;
+  ClientCertStrategy = require('passport-client-cert').Strategy,
+  CustomStrategy = require('passport-custom');
 
 /**
  * Create an authentication module instance based on the requested option. The authentication modules are
@@ -49,7 +50,8 @@ var getAuthenticationProviderInstance = function(options) {
   var type = options.type;
   var STRATEGIES = {
     'basic': Basic,
-    'client-cert': ClientCertificateStrategy
+    'client-cert': ClientCertificateStrategy,
+    'noop': NoOp
   };
   if (!type) {
     throw new Error('authentication type must be provided');
@@ -130,6 +132,35 @@ var ClientCertificateStrategy = function(provider) {
     console.log('validating authentication using provided certificate [%j]', certificate);
     module[fcn](certificate, function(error, authenticated) {
       console.log('authentication check executed with status: %s', authenticated);
+      done(error, authenticated);
+    });
+  });
+};
+
+/**
+ * NoOp authentication.
+ *
+ * @param  {object}   provider The external authentication provider as a module and function.
+ *                               {
+ *                                 "module": "my-auth-module",
+ *                                 "function": "my-auth-function"
+ *                               }
+ *                             The provider function accepts as a parameters: a callback that should be 
+ *                             informed when the authentication is performed.
+ *                             The calback accept two parameters an error and a flag that will be true on
+ *                             succesful authentication false otherwise.
+ *
+ *                             function(cb) {
+ *                               cb(null, true);
+ *                             }
+ *
+ * @return {object}            A new no-op authentication strategy instance
+ */
+var NoOp = function(provider) {
+  var module = require(provider.module),
+    fcn = provider['function'];
+  return new CustomStrategy(function(req, done) {
+    module[fcn](function(error, authenticated) {
       done(error, authenticated);
     });
   });
