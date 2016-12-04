@@ -19,7 +19,9 @@
 var Credential = require('./models').Credential,
   BasicStrategy = require('passport-http').BasicStrategy,
   ClientCertStrategy = require('passport-client-cert').Strategy,
-  CustomStrategy = require('passport-custom');
+  CustomStrategy = require('passport-custom'),
+  passport = require('passport-strategy'),
+  util = require('util');
 
 /**
  * Create an authentication module instance based on the requested option. The authentication modules are
@@ -156,10 +158,26 @@ var ClientCertificateStrategy = function(provider) {
  *
  * @return {object}            A new no-op authentication strategy instance
  */
+function NoOpStrategy(verify) {
+  if (!verify) {
+    throw new TypeError('NoOpStrategy requires a verify callback');
+  }
+  passport.Strategy.call(this);
+  this.name = 'noop';
+  this._verify = verify;
+}
+util.inherits(NoOpStrategy, passport.Strategy);
+NoOpStrategy.prototype.authenticate = function(req) {
+  var self = this;
+  self._verify(req, function(err, verified) {
+    self.success(verified, verified);
+  });
+}
+
 var NoOp = function(provider) {
   var module = require(provider.module),
     fcn = provider['function'];
-  return new CustomStrategy(function(req, done) {
+  return new NoOpStrategy(function(req, done) {
     module[fcn](function(error, authenticated) {
       done(error, authenticated);
     });
